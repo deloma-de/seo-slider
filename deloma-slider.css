@@ -1,0 +1,101 @@
+/*
+ * jQuery simple slider / slideshow / caoursel CSS
+ *
+ * Widget renders left and right arrows aswell as slide button indicators at the bottom.
+ *
+ * @author Marco Janc 2023 marcojanc{at}hotmail.com
+ */
+
+/* slider container */
+.del-slider {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+/* position all slides absolute (on top of each other to allow fade transition)*/
+.del-slider > div
+{
+	width: 100%;
+	position: absolute;
+}
+
+/* slides - initial hide all slides except first improves page speed metric 'largest contentful paint' which is good for SEO  */
+.del-slider > div:not(:first-child):not(.dots)
+{
+	opacity: 0;
+	display: none;
+}
+
+
+.del-slider > div > div
+{
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: inline-block;
+}
+
+/* next & previous buttons */
+.del-slider > .del-slider-prev, 
+.del-slider > .del-slider-next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 1rem 1.2rem;
+  margin-top: -22px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: 0.6s ease;
+  border-radius: 0 0.4rem 0.4rem 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.del-slider .del-slider-next {
+  right: 0;
+  border-radius: 0.4rem 0 0 0.4rem;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.del-slider .del-slider-prev:hover, 
+.del-slider .del-slider-next:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+/* The dots/bullets/indicators */
+
+.del-slider .del-slider-dots {
+  position: absolute;
+  bottom: 0.8rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* hide dots on small screen */
+@media only screen and (max-width: 576px) 
+{
+  .del-slider .del-slider-dots
+	{
+		display: none;
+	}
+}
+
+.del-slider .del-slider-dots .del-slider-dot {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+  margin: 0 0.25rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.del-slider .del-slider-dots .del-slider-dot.del-slider-dot-active,
+.del-slider .del-slider-dots .del-slider-dot:hover
+{
+  background-color: #717171;
+}
