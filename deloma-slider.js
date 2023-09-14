@@ -14,6 +14,7 @@
 	var CLASS_DOTS = "del-slider-dots";
 	var CLASS_DOT = "del-slider-dot";
 	var CLASS_ACTIVE = "del-slider-dot-active";
+	var FADE_DELAY = 800;
 	
 	$.widget("deloma.delSlider", 
 	{
@@ -32,12 +33,12 @@
 			if (slides.length > 0)
 			{
 				// prev anchor
-				var prev = $("<a/>").addClass(CLASS_PREV).html("❮")
+				var prev = $("<span/>").addClass(CLASS_PREV).html("❮")
 					.click(function(){ widget.slideOffset(-1); });
 				container.append(prev);
 
 				// next anchor
-				var next = $("<a/>").addClass(CLASS_NEXT).html("❯")
+				var next = $("<span/>").addClass(CLASS_NEXT).html("❯")
 					.click(function(){ widget.slideOffset(1); });
 				container.append(next);
 
@@ -77,7 +78,6 @@
 			container.children("." + CLASS_NEXT).remove();
 			container.children("." + CLASS_DOTS).remove();
 			
-			var widget = this;
 			// remove resize handler
 			$(window).off("resize", $.proxy(this._resize, this));
 		},
@@ -156,7 +156,7 @@
 				$(dots[i]).toggleClass(CLASS_ACTIVE, indexNew == i);
 
 			var slides = container.children('div');
-			// slides = [...slides].reverse();
+			
 			for (var i = 0; i < slides.length; i++) 
 			{
 				var slide = $(slides[i]);
@@ -164,9 +164,9 @@
 				slide.css("display", i == indexOld || i == indexNew ? "block" : "none");
 
 				if (i == indexOld)
-					slide.fadeTo(800, 0);
+					slide.fadeTo(FADE_DELAY, 0);
 				else if (i == indexNew )
-					slide.fadeTo(800, 1);
+					slide.fadeTo(FADE_DELAY, 1);
 			}
 		}
 
