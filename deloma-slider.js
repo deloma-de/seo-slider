@@ -18,6 +18,11 @@
 	
 	$.widget("deloma.delSlider", 
 	{
+		options: 
+		{
+			initHeight: false, 
+		},
+	
 		/*
 		 * init DOM and resize handler
 		 */
@@ -32,19 +37,22 @@
 			var slides = container.children('div');
 			if (slides.length > 0)
 			{
+				// add after last div so optional placeholder img is not last item
+				var slideLast = $(slides[slides.length - 1]);
+				
 				// prev anchor
 				var prev = $("<span/>").addClass(CLASS_PREV).html("❮")
 					.click(function(){ widget.slideOffset(-1); });
-				container.append(prev);
+				slideLast.after(prev);
 
 				// next anchor
 				var next = $("<span/>").addClass(CLASS_NEXT).html("❯")
 					.click(function(){ widget.slideOffset(1); });
-				container.append(next);
+				prev.after(next);
 
 				// buttons container
 				var dots = $("<span/>").addClass(CLASS_DOTS);
-				container.append(dots);
+				next.after(dots);
 
 				// buttons for each slide
 				for (var i = 0; i < slides.length; i++) 
@@ -62,11 +70,14 @@
 				}
 			}
 
-			// 2. set height
-			this._resize();
-
-			// resize handler
-			$(window).on("resize", $.proxy(this._resize, this));
+			// 2. init height optional
+			if (this.option.initHeight)
+			{
+				this._resize();
+	
+				// resize handler
+				$(window).on("resize", $.proxy(this._resize, this));
+			}
 			
 		},
 
@@ -79,7 +90,8 @@
 			container.children("." + CLASS_DOTS).remove();
 			
 			// remove resize handler
-			$(window).off("resize", $.proxy(this._resize, this));
+			if (this.option.initHeight)
+				$(window).off("resize", $.proxy(this._resize, this));
 		},
 
 		/* 
