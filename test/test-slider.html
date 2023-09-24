@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -51,7 +51,7 @@
 				 * which is important for 'largest contentful paint' (LCP) 
 				 * metric is immediately visible without the javascript being initialized 
 				 */
-				setTimeout(function() { $("#slider").delSlider(); }, 2000);
+				setTimeout(function() { $("#slider").delSlider(); }, 1000);
 
 				// production code!!!
 				// $("#slider").delSlider();
@@ -65,6 +65,9 @@
 		<!-- add slider css class to container div so it improves web core vitals 
 			metric 'largest contentful paint' since first slide already works without 
 			slow or deferred javascript initialization -->
+			
+		<div>
+			
 		<div id="slider" class="del-slider">
 		
 			<!-- slide 1 -->
@@ -123,10 +126,10 @@
 			
 			</div>
 		
-			<!-- slider 4 -->
+			<!-- slider 4 - paypal -->
 			<div>
 
-				<!-- paypal -->
+				<!-- caption -->
 				<div style="left: 74%; top: 44%; font-size: 3.2vw; width: 8em; color: #f9e2b8;" class="font-bold text-center" >
 					Neu!<br />
 					PayPal
@@ -136,9 +139,53 @@
 				<img fetchPriority="low" loading="lazy" class="w-full h-auto"  src="https://mediafile.deloma.de/images/q_auto,f_auto/v1/images/agency/9ccd1733-5932-45fc-96be-02fc0e533d20/paypal-cocktail-top_1800x700.jpg" width="1800" height="700" alt="Cocktailglas mit Smartphone mit PayPal Logo."/>
 				
 		  	</div>
+		  	
+ 			<!-- slider 5 - ec karte -->
+			<div>
 
+				<!-- caption -->
+		    	<div style="left: 65%; top: 87%; color: #fff; font-size: 2.3vw;" class="font-bold">
+		    		Kartenzahlung bei Lieferung!
+		    	</div>
+							
+				<!-- background image -->
+				<img fetchPriority="low" loading="lazy" class="w-full h-auto" 
+					 src="https://mediafile.deloma.de/images/q_auto,f_auto/v1/images/shop/d8183add-3fd7-4926-bc5d-101c9433e259/banner-card-payment-hax_1800x700.jpg" 
+					 width="1800" height="700" alt="Lieferfahrer mit Lieferwagen, Kunde und EC-Terminal zur Bezahlung."/>
+				
+		  	</div>
+		  	
+			<!-- slide 6 - bub map -->
+			<div>
+			
+				<div class="caption-border-shadow" style="left: 39%; top: 12%; font-size: 3vw;">
+					Der bringt's!
+				</div>
+		
+				<!-- img caption -->
+				<img alt="Lieferwagen mit Kisten" class="absolute" height="384" src="https://mediafile.deloma.de/image/upload/h_384,q_auto,f_auto/v1/images/shopchain/b441656e-930a-4914-9267-7b82c8defd77.png" style="width: 30%; height: auto; left: 33%; top: 51%;" width="704" />
+				
+				<!-- background image -->
+				<img alt="Stadtplan von oben" class="w-full h-auto" fetchpriority="high" height="700" src="https://mediafile.deloma.de/image/upload/q_auto,f_auto/v1/images/shop/0f535cbe-faa4-449d-a296-faae50e8b9ae.jpg" width="1800" />
+			</div>
+			
+			<!-- we need to repeat first image so the browser knows the height of the slider
+				also good for SEO to optimized cumulated layout shift (CLS) -->
+			<img fetchPriority="high" class="w-full h-auto" width="1800" height="700"
+				src="https://mediafile.deloma.de/images/q_auto,f_auto/v1/images/shop/2999348d-9ac9-44aa-b9c1-c585af27ce9f/Slider-woman_1800x700.jpg" 
+				alt="Kellnerin mit Telefon und Limonade auf Tablett."/>
+		
 		</div>
+		
+		<!-- add fancy shadow -->
+		<img alt="Schatten" class="w-full h-auto m-t" height="120" src="https://mediafile.deloma.de/images/f_auto,q_auto,w_1800/v1/images/agency/5c5dc687-6ce1-4ed9-adb0-ca2cb2f96e27/slider-shadow3.png" style="margin-top: -0.25rem" width="1800">
 
+		<h1>Repeat first image</h1>
+		<p>
+			Even without height attribute on the slider the height is correct if an image with same dimension is placed after the slides. To optimize browser cache use the first image. 
+			Else this text would not be visible since it would be behind the slider since slides have absolute CSS.
+		</p>
+		<p>If we would use javascript to set the height we would get penalized by google since there would a cumulate layout shift (CLS)</p>
 	</body>
 	
 </html>
