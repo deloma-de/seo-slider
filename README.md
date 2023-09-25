@@ -37,9 +37,13 @@ Content is completely visible in DOM in a natural HTML tag structure and so visi
 
 The CSS stylesheet file and javascript JS file are very small in size. 
 
-### 3. Optimized for _Web Core Vitals_ metric _Largest Contentful paint (LCP)_ 
+### 3. Optimized for _Web Core Vitals_ metric 
 
 _Web Core Vitals_ is a framework for search engines to test the quality of a webpage technically and visually. You can check your rating inside google search console or using google test page https://pagespeed.web.dev or developer tool _Lighthouse_ in your browser.
+
+*Test it out yourself:* Use the example html without the javascript file and see if the first slide is still visible!
+
+#### 3.1 _Largest Contentful paint (LCP)_ 
 
 An important metric is _"Largest contentful paint" (LCP)_ which represents how fast the upper visible content (above the fold) is rendered and visible to the user. For content below the fold the user must scroll so its less important. _First impression counts!_
 
@@ -47,7 +51,11 @@ This slider is LCP friendly because the first slide is immediately visible and a
 
 Since the javascript code is *not needed to display the first slide* so the loading of the JS file can be deferred or loaded asynchronously.
 
-*Test it out yourself:* Use this slider without the javascript file and see if the first slide is still visible!
+#### 3.1 _Cumulated layout shift (CLS)_ 
+
+Metric _cumulated layout shift_ is an important metric since it measures how much the page will jump during loading which lead to annoying user behavior, especially on mobile small screens.
+
+This slider is CLS friendly since there is no shift if you use a fixed css `height` on the slider or if thats not possible repeat the first background `<img>` tag after the slides so no additional javascript is required to calculate the height on initialization and windows resizing.
 
 ## Documentation
 
