@@ -59,9 +59,87 @@ This slider is CLS friendly since there is no shift if you use a fixed css `heig
 
 ## Documentation
 
-Please see the test folder for examples.
+In this tutorial, we'll create a simple image slider for a web page. We'll cover initializing the slider, adding captions, and optimizing images for performance and SEO.
 
-TODO add markup
+### Step 1: Creating the Basic Slider
+
+First, add the HTML code for the slider. We use simple images with full width and automatic height.
+```html
+<div id="slider" class="del-slider">
+    
+	<!-- slide 1 -->
+	<div>
+		<img  class="w-full h-auto"  src="path_to_your_image1.jpg" alt="Description of the first image" width="1800" height="700"/>
+	</div>
+	<!-- slide 2 -->
+	<div>
+		<img  class="w-full h-auto"  src="path_to_your_image2.jpg" alt="Description of the second image" width="1800" height="700"/>
+	</div>
+
+ </div>
+```
+
+This sets up a basic slider where each image will stretch to the full width of the slider container.
+
+![ezgif com-crop](https://github.com/deloma-de/seo-slider/assets/104908394/be9f8c9d-2235-457a-8874-b6ed414be915)
+
+### Step 2: Adding Captions
+
+Add captions with relative font size (em) to ensure better responsiveness on different screen sizes.
+```html
+<div id="slider" class="del-slider">
+
+	<div>
+		<img  class="w-full h-auto"  src="path_to_your_image1.jpg" alt="Description of the first image" width="1800" height="700"/>
+
+         <div class="caption" style="position: absolute; top: 20%; left: 10%; font-size: 2em;">
+            Your caption here
+        </div>
+
+        <!-- img caption -->
+		<img class="absolute" height="384"src="path_to_your_image1.jpg" height="384" style="width: 30%; height: auto; left: 33%; top: 51%;" width="704" />
+				
+	</div>
+
+ </div>
+```
+Position the caption absolutely within the .slide div. Adjust the 'top' and 'left' properties to place the caption as needed.
+
+![ezgif com-crop (2)](https://github.com/deloma-de/seo-slider/assets/104908394/513ac166-90fe-4029-8cc7-accbf6caa8ed)
+
+### Repeating the First Image
+
+To determine the height of the slider, repeat the first image at the end of the slider. This improves display and reduces layout shifting.
+
+```html
+<div id="slider" class="slider">
+
+    <!-- Your slides -->
+    <!-- Repeat the first image at the end -->
+    <img src="path_to_your_first_image.jpg" alt="Description of the first image" style="width: 100%; height: auto;">
+
+</div>
+```
+
+This technique helps in maintaining a consistent height for the slider, especially before the JavaScript has loaded.
+
+### Optimizing Image Loading
+
+Optimize image loading by adding loading, fetchPriority, and srcSet attributes.
+
+- loading="lazy" for images that aren't immediately visible.
+- fetchPriority="high" for the first or crucial images.
+- Use srcSet for responsive image sizes.
+
+```html
+<div id="slider" class="slider">
+
+    <img src="path_to_your_first_image.jpg" alt="Description of the first image" loading="lazy" fetchPriority="high" style="width: 100%; height: auto;">
+   
+</div>
+```
+
+Include alt, width, and height attributes for each image for better SEO performance.
 
 ## Demo
 
