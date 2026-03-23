@@ -120,7 +120,8 @@ To reduce layout shifting, especially before the javascript has loaded the brows
     <img src="path_to_your_first_image.jpg" alt="Description of the first image" style="width: 100%; height: auto;">
 
 
-    <!-- or use data src attribute with a white background that is exactly the wished dimension (here 1800x700) <img class="w-full h-auto ui-corner-all" fetchpriority="low" height="700" loading="lazy" alt="Hintergrund weiß" src="data:image/webp;base64,UklGRlgAAABXRUJQVlA4TEwAAAAvB8euAAfQ//73v/8BAUnS//9hRP8z/vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc//wcL" width="1800"> -->
+    <!-- or use data src attribute with a white background that is exactly the wished dimension (here 1800x700)
+        <img class="w-full h-auto" fetchpriority="low" height="700" loading="lazy" alt="Background white" src="data:image/webp;base64,UklGRlgAAABXRUJQVlA4TEwAAAAvB8euAAfQ//73v/8BAUnS//9hRP8z/vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc//wcL" width="1800"> -->
 
 </div>
 ```
