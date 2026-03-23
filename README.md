@@ -107,7 +107,7 @@ Position the caption absolutely within the .slide div. Adjust the 'top' and 'lef
 
 ![ezgif com-crop (2)](https://github.com/deloma-de/seo-slider/assets/104908394/513ac166-90fe-4029-8cc7-accbf6caa8ed)
 
-### Dummy image to reduce layout shift.
+### Step 3: Add dummy image to reduce layout shift.
 
 To reduce layout shifting, especially before the javascript has loaded the browser needs to determine the height of the slider. For this we need to add an dummy image at the end. You can repeat the first image again or use a white background image.
 
@@ -128,7 +128,7 @@ To reduce layout shifting, especially before the javascript has loaded the brows
 This technique helps in maintaining a consistent height for the slider, especially before the JavaScript has loaded.
 
 
-### Initialize Slider with jQuery
+### Step 4: Initialize Slider with jQuery
 
 ```html
 <script>
