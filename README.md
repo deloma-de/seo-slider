@@ -59,7 +59,7 @@ This slider is CLS friendly since there is no shift if you use a fixed css `heig
 
 ## Documentation
 
-In this tutorial, we'll create a simple image slider for a web page. We'll cover initializing the slider, adding captions, and optimizing images for performance and SEO.
+In this tutorial, we'll create a simple image slider for a web page. We'll cover initializing the slider, adding captions, and optimizing images for performance and SEO. We use css classes from library [PrimeFlex](https://primeflex.org/).
 
 ### Step 1: Creating the Basic Slider
 
@@ -107,28 +107,44 @@ Position the caption absolutely within the .slide div. Adjust the 'top' and 'lef
 
 ![ezgif com-crop (2)](https://github.com/deloma-de/seo-slider/assets/104908394/513ac166-90fe-4029-8cc7-accbf6caa8ed)
 
-### Repeating the First Image
+### Dummy image to reduce layout shift.
 
-To determine the height of the slider, repeat the first image at the end of the slider. This improves display and reduces layout shifting.
+To reduce layout shifting, especially before the javascript has loaded the browser needs to determine the height of the slider. For this we need to add an dummy image at the end. You can repeat the first image again or use a white background image.
 
 ```html
 <div id="slider" class="slider">
 
     <!-- Your slides -->
-    <!-- Repeat the first image at the end -->
+
+    <!-- dummy background image a) repeat the first image at the end -->
     <img src="path_to_your_first_image.jpg" alt="Description of the first image" style="width: 100%; height: auto;">
+
+
+    <!-- or use data src attribute with a white background that is exactly the wished dimension (here 1800x700) <img class="w-full h-auto ui-corner-all" fetchpriority="low" height="700" loading="lazy" alt="Hintergrund weiß" src="data:image/webp;base64,UklGRlgAAABXRUJQVlA4TEwAAAAvB8euAAfQ//73v/8BAUnS//9hRP8z/vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc//wcL" width="1800"> -->
 
 </div>
 ```
 
 This technique helps in maintaining a consistent height for the slider, especially before the JavaScript has loaded.
 
+
+### Initialize Slider with jQuery
+
+```html
+<script>
+    $(document).ready(function() {
+
+        ('#slider').delSlider();
+    });
+</script>
+```
+
 ### Optimizing Image Loading
 
 Optimize image loading by adding loading, fetchPriority, and srcSet attributes.
 
 - loading="lazy" for images that aren't immediately visible.
-- fetchPriority="high" for the first or crucial images.
+- fetchPriority="high" for the first or crucial images and "low" for the other slides.
 - Use srcSet for responsive image sizes.
 
 ```html
