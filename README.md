@@ -117,7 +117,7 @@ To reduce layout shifting, especially before the javascript has loaded the brows
     <!-- Your slides -->
 
     <!-- dummy background image a) repeat the first image at the end -->
-    <img src="path_to_your_first_image.jpg" alt="Description of the first image" style="width: 100%; height: auto;">
+    <img class="w-full h-auto" src="path_to_your_first_image.jpg" alt="Description of the first image" width="1800" height="700">
 
 
     <!-- or use data src attribute with a white background that is exactly the wished dimension (here 1800x700)
@@ -140,18 +140,19 @@ This technique helps in maintaining a consistent height for the slider, especial
 </script>
 ```
 
-### Optimizing Image Loading
+### Optimizing Image Loading and Rendering
 
 Optimize image loading by adding loading, fetchPriority, and srcSet attributes.
 
-- loading="lazy" for images that aren't immediately visible.
-- fetchPriority="high" for the first or crucial images and "low" for the other slides.
-- Use srcSet for responsive image sizes.
+- Add `loading="lazy"` for images that aren't immediately visible.
+- `fetchPriority="high"` for the first or crucial images and `"low"` for the other slides.
+- Use attribute `srcSet` for responsive image sizes.
+- Add dimension attributes `height` and `width` to improve browser rendering speed and reduce layout shift.
 
 ```html
 <div id="slider" class="slider">
 
-    <img src="path_to_your_first_image.jpg" alt="Description of the first image" loading="lazy" fetchPriority="high" style="width: 100%; height: auto;">
+    <img class="w-full h-auto" src="path_to_your_first_image.jpg" alt="Description of the first image" loading="lazy" fetchPriority="high">
    
 </div>
 ```
